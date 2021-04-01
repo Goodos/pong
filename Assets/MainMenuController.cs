@@ -22,12 +22,6 @@ public class MainMenuController : MonoBehaviour
         acceptColorButton.onClick.AddListener(AcceptColor);
     }
 
-
-    void Update()
-    {
-
-    }
-
     void StartGame()
     {
         SceneManager.LoadScene("GameScene");

@@ -64,26 +64,7 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0, 15f));
-
-            if (rb[0].position.x >= leftX.x + 1f & rb[0].position.x <= rightX.x - 1f)
-            {
-                rb[0].MovePosition(new Vector3(Mathf.Lerp(rb[0].position.x, mousePos.x, Time.fixedDeltaTime * 5f), rb[0].position.y, 0));
-            }
-            else
-            {
-            }
-            /*
-            if (Input.mousePosition.x <= Screen.width / 2)
-            {
-                if (rb[0].position.x >= leftX.x + 1f)
-                    rb[0].MovePosition(rb[0].position + velocity * speed * Time.fixedDeltaTime);
-            } 
-            else 
-            if (Input.mousePosition.x >= Screen.width / 2)
-            {
-                if (rb[0].position.x <= rightX.x - 1f)
-                    rb[0].MovePosition(rb[0].position + -velocity * speed * Time.fixedDeltaTime);
-            }*/
+            rb[0].MovePosition(new Vector3(Mathf.Lerp(rb[0].position.x, Mathf.Clamp(mousePos.x, leftX.x + 1f, rightX.x - 1f), Time.fixedDeltaTime * 7f), rb[0].position.y, 0));
         }
         rb[1].position = new Vector2(rb[0].position.x, rb[1].position.y);
     }

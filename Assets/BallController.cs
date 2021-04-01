@@ -14,16 +14,6 @@ public class BallController : MonoBehaviour
         rb.AddForce(velocity * GetSpeed());
     }
 
-    void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
-    {
-
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Board")
