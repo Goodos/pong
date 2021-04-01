@@ -6,6 +6,7 @@ public class MainMenuController : MonoBehaviour
 {
     [SerializeField] Button startGameButton;
     [SerializeField] Button settingsButton;
+    [SerializeField] Button exitButton;
 
     [SerializeField] Text bestScoreText;
 
@@ -19,6 +20,7 @@ public class MainMenuController : MonoBehaviour
         settingsWindow.gameObject.SetActive(false);
         startGameButton.onClick.AddListener(StartGame);
         settingsButton.onClick.AddListener(Settings);
+        exitButton.onClick.AddListener(Exit);
         acceptColorButton.onClick.AddListener(AcceptColor);
     }
 
@@ -36,5 +38,15 @@ public class MainMenuController : MonoBehaviour
     {
         SaveController.SetBallColor(selectedColor.color);
         settingsWindow.gameObject.SetActive(false);
+    }
+
+    void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#endif
+#if UNITY_ANDROID
+        Application.Quit();
+#endif
     }
 }
